@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const mindarThree = new window.MINDAR.IMAGE.MindARThree({
       container: document.body,
       imageTargetSrc: "./assets/targets/imageBrochure.mind",
+       uiLoading: "#scanning-overlay",
     });
     const { renderer, cssRenderer, scene, cssScene, camera } = mindarThree;
 
@@ -205,6 +206,7 @@ document.addEventListener("DOMContentLoaded", () => {
         while (o.parent && !o.userData.clickable) {
           o = o.parent;
         }
+        if (o.userData.clickable) window.showLoadingScreen();
         if (o.userData.clickable) {
           if (o === leftIcon || o === rightIcon) {
             if (o === leftIcon) {
